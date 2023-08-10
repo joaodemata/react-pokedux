@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 /* import { connect } from 'react-redux';*/
-import { getPokemonsWithDetail, setLoading, setPokemons } from './actions';
-import { useDispatch, useSelector } from 'react-redux';
+import { getPokemonsWithDetail, setLoading, /* setPokemons */ } from './actions';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Col, Spin } from 'antd';
 import { Searcher } from './components/search';
 import { PokemonList } from './components/pokemon_list';
-import { getPokemonDetail, getPokemons } from './api';
+import { /* getPokemonDetail,  */getPokemons } from './api';
 import logo from './statics/logo.svg';
 import './App.css';
 
 function App(/* {pokemons, setPokemons} */) {
+  // El useSelector realiza comparaciones estrictas, en el caso de objetos y arrays realiza comparacion de referencias. Como utilizamos inmmutabilidad la referencia siempre son distintas
+  const pokemons = useSelector((state) => state.getIn(['data', 'pokemons']), shallowEqual).toJS();
 
-  const pokemons = useSelector(state => state.pokemons);
-  const loading = useSelector(state => state.loading);
+  const loading = useSelector((state) => state.getIn(['ui', 'loading']));
 
   const dispatch = useDispatch()
 
