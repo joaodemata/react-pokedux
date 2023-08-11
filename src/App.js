@@ -38,10 +38,10 @@ function App(/* {pokemons, setPokemons} */) {
 
   return (
     <div className="App">
-      <Col span={4} offset={10}>
+      <Col md={{span:4, offset:10}} sm={{span:8, offset:8}} xs={{span:8, offset:8}}>
         <img src={logo} alt='Pokedux'/>
       </Col>
-      <Col span={8} offset={8}>
+      <Col md={{span:8, offset:8}} sm={{span:14, offset:5}}  xs={{span: 16, offset: 4}}>
         <Searcher/>
       </Col>
 
