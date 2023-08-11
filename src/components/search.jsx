@@ -1,7 +1,14 @@
-import {Input} from 'antd';
+import { Input } from 'antd';
+import { useDispatch } from 'react-redux';
+import { setSearchPokemons } from '../slices/data.slice';
 
 const Searcher = () => {
-    return <Input.Search placeholder='Buscar...' style={{marginBottom: 10}}/> 
+    const dispatch = useDispatch();
+    const handleOnChange = (_search) => {
+        dispatch(setSearchPokemons(_search));
+    }
+
+    return <Input.Search placeholder='Buscar...' onChange={(event)=> handleOnChange(event.target.value)} style={{marginBottom: 10}}/> 
 }
 
 export {Searcher}
