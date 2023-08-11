@@ -8,7 +8,7 @@ const Searcher = () => {
         dispatch(setSearchPokemons(_search));
     }
 
-    return <Input.Search placeholder='Buscar...' onChange={(event)=> handleOnChange(event.target.value)} style={{marginBottom: 10}}/> 
+    return <Input.Search placeholder='Buscar pokemon por el nombre' onChange={(event)=> handleOnChange(event.target.value)} style={{marginBottom: 10}}/> 
 }
 
 export {Searcher}
