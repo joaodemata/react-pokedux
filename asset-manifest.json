@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-pokedux/static/css/main.05b5746a.css",
+    "main.js": "/react-pokedux/static/js/main.8a469451.js",
+    "static/media/logo.svg": "/react-pokedux/static/media/logo.0905522d6d18ceaafa60a31e87c99e88.svg",
+    "index.html": "/react-pokedux/index.html",
+    "main.05b5746a.css.map": "/react-pokedux/static/css/main.05b5746a.css.map",
+    "main.8a469451.js.map": "/react-pokedux/static/js/main.8a469451.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.05b5746a.css",
+    "static/js/main.8a469451.js"
+  ]
+}
