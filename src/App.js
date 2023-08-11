@@ -1,37 +1,39 @@
 import { useEffect } from 'react';
 /* import { connect } from 'react-redux';*/
-import { getPokemonsWithDetail, setLoading, /* setPokemons */ } from './actions';
+// import { getPokemonsWithDetail, setLoading, /* setPokemons */ } from './actions';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Col, Spin } from 'antd';
 import { Searcher } from './components/search';
 import { PokemonList } from './components/pokemon_list';
-import { /* getPokemonDetail,  */getPokemons } from './api';
+// import { /* getPokemonDetail,  */getPokemons } from './api';
 import logo from './statics/logo.svg';
 import './App.css';
+import { fetchPokemonsWithDetails } from './slices/data.slice';
 
 function App(/* {pokemons, setPokemons} */) {
   // El useSelector realiza comparaciones estrictas, en el caso de objetos y arrays realiza comparacion de referencias. Como utilizamos inmmutabilidad la referencia siempre son distintas
-  const pokemons = useSelector((state) => state.getIn(['data', 'pokemons']), shallowEqual).toJS();
+  const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
 
-  const loading = useSelector((state) => state.getIn(['ui', 'loading']));
+  const loading = useSelector((state) => state.ui.loading);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(()=> {
 
-    const pokemons = async () => {
-      dispatch(setLoading(true));
+    // const pokemons = async () => {
+    //   dispatch(setLoading(true));
 
-    const pokemonsRes =  await getPokemons();
-    // const pokemonDetail = await Promise.all(pokemonsRes.map(pokemon=> getPokemonDetail(pokemon)));
+    // const pokemonsRes =  await getPokemons();
+    // // const pokemonDetail = await Promise.all(pokemonsRes.map(pokemon=> getPokemonDetail(pokemon)));
 
-    // dispatch(setPokemons(pokemonDetail));
-      dispatch(getPokemonsWithDetail(pokemonsRes));
-      dispatch(setLoading(false));
-    } 
+    // // dispatch(setPokemons(pokemonDetail));
+    //   dispatch(getPokemonsWithDetail(pokemonsRes));
+    //   dispatch(setLoading(false));
+    // } 
 
-    pokemons()
+    // pokemons()
 
+    dispatch(fetchPokemonsWithDetails())
   }, []);
 
   return (
